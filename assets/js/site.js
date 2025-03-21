@@ -1,56 +1,12 @@
-// write cool JS hwere!!
-let mainImage = document.getElementById('mainImage')
+// Select all the small images
+let smallImages = document.querySelectorAll("#favoriteParent img:not(#mainImage)");
 
-let smallImageOne = document.getElementById('imgOne')
-let smallImageTwo = document.getElementById('imgTwo')
-let smallImageThree = document.getElementById('imgThree')
-let smallImageFour = document.getElementById('imgFour')
-
-
-
-
-
-smallImageOne.addEventListener('click', function (event) {
-
-    let bigImageUrl = mainImage.src
-    let smallImageUrl = smallImageOne.src
-
-
-    mainImage.src = smallImageUrl
-    smallImageOne.src = bigImageUrl
-
-})
-
-
-smallImageTwo.addEventListener('click', function (event) {
-
-    let bigImageUrl = mainImage.src
-    let smallImageUrl = smallImageTwo.src
-
-
-    mainImage.src = smallImageUrl
-    smallImageTwo.src = bigImageUrl
-
-})
-
-smallImageThree.addEventListener('click', function (event) {
-
-    let bigImageUrl = mainImage.src
-    let smallImageUrl = smallImageThree.src
-
-
-    mainImage.src = smallImageUrl
-    smallImageThree.src = bigImageUrl
-
-})
-
-smallImageFour.addEventListener('click', function (event) {
-
-    let bigImageUrl = mainImage.src
-    let smallImageUrl = smallImageFour.src
-
-
-    mainImage.src = smallImageUrl
-    smallImageFour.src = bigImageUrl
-
-})
+// Add click event listeners to each small image
+smallImages.forEach((img) => {
+  img.addEventListener("click", function () {
+    // Swap the src of the main image with the clicked image
+    let tempSrc = mainImage.src;
+    mainImage.src = this.src;
+    this.src = tempSrc;
+  });
+});
